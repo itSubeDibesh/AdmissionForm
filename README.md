@@ -27,6 +27,6 @@ Upload the file on your server.
 
 ## That's it, no more configuration.
 
-Deployed on https://admission.bebs.edu.np/
+Deployed on [BALODAYA HIGHER SECONDARY SCHOOL](https://admission.bebs.edu.np/)
 
-For Demo try it on : Link comming soon
+For Demo try it on : [CodeAppStore](https://admission.projects.codeappstore.com/)
