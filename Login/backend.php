@@ -24,17 +24,15 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Configurations/Include/navbar.php';
                     </div>
                 </div>
                 <div class="card-body">
-                    <table  class="table table-bordered nowrap" style="width:100%" id="DiaplyTable">
+                    <table class="table table-bordered nowrap" style="width:100%" id="DiaplyTable">
                         <thead class="table-dark text-center">
                             <tr>
                                 <th>S.N</th>
                                 <th>Name</th>
-                                 <th>Applied For</th>
-                                <th>Image</th>
-                                <th>Stream</th>
-                                <th>Level</th>
-                                <th>Phone</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
                                 <th>Father's Name</th>
+                                <th>Mother's Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,14 +42,12 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Configurations/Include/navbar.php';
                             ?>
                                 <tr class="border">
                                     <td><?php echo $key + 1 ?></td>
-                                    <td><?php echo $value->FullName ?></td>
-                                     <td><?php echo $value->AppliedFor ?></td>
-                                    <td><img src="<?php echo $value->Image == null ? UPLOAD_URL . '/logo.jpg' : $value->Image; ?>" class="img img-thumbnail img-responsive w-50" alt=""></td>
-                                    <td><?php echo $value->AppliedFor=="College"?$value->Stream:"" ?></td>
-                                    <td><?php echo $value->AppliedFor=="School"? $value->Level:"" ?></td>
-                                    <td><?php echo $value->MobileNo ?></td>
-                                    <td><?php echo $value->FatherName ?></td>
-                                    <td><a href="individualDetail.php?studentID=<?php echo $value->admissionId ?>" class="btn btn-success"><i class="fas fa-eye"></i> View</a></td>
+                                    <td><?php echo $value->FullNameEnglish ?></td>
+                                    <td><?php echo $value->Dob ?></td>
+                                    <td><?php echo $value->Gender ?></td>
+                                    <td><?php echo $value->FathersName ?></td>
+                                    <td><?php echo $value->MothersName ?></td>
+                                    <td><a href="individualDetail.php?studentID=<?php echo $value->AdmissionId ?>" class="btn btn-success"><i class="fas fa-eye"></i> View</a></td>
                                 </tr>
                             <?php
                             }

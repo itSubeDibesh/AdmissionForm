@@ -27,12 +27,11 @@ if (isset($_GET, $_GET['studentID']) && !empty($_GET['studentID'])) {
             <div class="card">
                 <div class="card-header text-center">
                     <div class="card-title display-inline">
-                        <h4 class="d-inline"><?php echo $admissionData[0]->FullName ?> details</h4>
+                        <h4 class="d-inline"><?php echo @$admissionData[0]->FullNameEnglish ?> details</h4>
                         <button value="print" onclick=" printDiv('divToPrint');" class=" d-inline float-right btn btn-success"><i class="fas fa-print"></i> Print</button>
                     </div>
                 </div>
-
-                <div class=" card-body" id="divToPrint">
+                <div class="m-4 card-body" id="divToPrint">
                     <div class=" row border">
                         <div class="col-12 ">
                             <div class="row form-group p-2">
@@ -51,327 +50,284 @@ if (isset($_GET, $_GET['studentID']) && !empty($_GET['studentID'])) {
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 p-2 text-center ">
+                            <h4>Online Regestration</h4>
+                        </div>
+                    </div>
                     <div class="row border">
-                        <div class="col-12">
-                            <div class="row form-group p-2">
-                                <div class="col col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>Serial Number:</strong></label>
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->admissionId ?>" disabled class="form-control">
-                                </div>
-                                <div class="col col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>AppliedFor:</strong></label>
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->AppliedFor ?>" disabled class="form-control">
-                                </div>
-                                <?php
-                                if ($admissionData[0]->AppliedFor == "School") {
-                                ?>
-                                    <div class="col col-md-6 p-2">
-                                        <label class=" form-control-label"><strong>Level:</strong></label>
-                                    </div>
-                                    <div class="col-12 col-md-6 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->Level ?>" disabled class="form-control">
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row form-group p-2">
-                                <div class="col-sm col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>Academic Year:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo date("Y") ?>" disabled class="form-control">
-                                </div>
-                                <?php
-                                if ($admissionData[0]->AppliedFor != "School") {
-                                ?>
-                                    <div class="col-sm col-md-6 p-2">
-                                        <label class=" form-control-label"><strong>Stream:</strong></label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->Stream  ?>" disabled class="form-control">
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                                <div class="col-sm-12 col-md-6">
-                                </div>
-                                <div class="col-sm-12 col-md-6  p-2 text-center">
-                                    <img src="<?php echo $admissionData[0]->Image == null ? UPLOAD_URL . '/logo.jpg' :  $admissionData[0]->Image; ?>" class="img img-thumbnail w-50" alt="">
-                                    <br /> <strong>Image</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2">A. Personal information</h4>
-                            <div class="row form-group p-2">
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Full Name:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-9 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->FullName ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Gender:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Gender ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Nationality:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Nationality ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Date of birth:</strong></label>
-                                </div>
-                                <div class="col col-md-3 p-2 display-inline">
-                                    (B.S): Year <input type="text" value="<?php echo $admissionData[0]->YearBs ?>" disabled class="form-control">
-                                    (A.D): Year<input type="text" value="<?php echo $admissionData[0]->YearAD ?>" disabled class="form-control">
-                                </div>
-                                <div class="col col-md-3 p-2 display-inline">
-                                    (B.S): Month <input type="text" value="<?php echo $admissionData[0]->MonthBs ?>" disabled class="form-control">
-                                    (A.D): Month <input type="text" value="<?php echo $admissionData[0]->MonthAD ?>" disabled class="form-control">
-                                </div>
-                                <div class="col col-md-3 p-2 display-inline">
-                                    (B.S): Day <input type="text" value="<?php echo $admissionData[0]->DayBs ?>" disabled class="form-control">
-                                    (A.D): Day <input type="text" value="<?php echo $admissionData[0]->DayAD ?>" disabled class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2">B. Contact information</h4>
-                            <div class="row form-group p-2">
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>Zone</strong><input type="text" value="<?php echo $admissionData[0]->Zone ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>District</strong><input type="text" value="<?php echo $admissionData[0]->District ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>VDC/Municipality</strong><input type="text" value="<?php echo $admissionData[0]->VDC_Municapilaty ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>Ward No</strong><input type="text" value="<?php echo $admissionData[0]->WardNo ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>Tole</strong><input type="text" value="<?php echo $admissionData[0]->ToleNo ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-4 p-2">
-                                    <strong>Telephone</strong><input type="text" value="<?php echo $admissionData[0]->TelephoneNo ?>" disabled class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2">C. Family information</h4>
-                            <div class="row form-group p-2">
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Father's Name:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->FatherName ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Nationality:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->FatherNationality ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Occupation/Title:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->FatherOccupation_Title ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Telephone(Off):</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Telephone_Off ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Telephone(Res):</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-9 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Telephone_Res ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Mother's Name:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->MotherName ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Nationality:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->MotherNationality ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Occupation/Title:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->MotherOccupation_Title ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Telephone:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->MotherTelephone ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Local Gurdain:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->LocalGurdain ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Relation:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Relationship ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Address:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-9 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->Address ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Telephone:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->GurdainTelephoneNo ?>" disabled class="form-control">
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <label class=" form-control-label"><strong>Mobile No:</strong></label>
-                                </div>
-                                <div class="col-sm-12 col-md-3 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->MobileNo ?>" disabled class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                        if ($admissionData[0]->AppliedFor == 'College' || ($admissionData[0]->Level >= 8 && $admissionData[0]->Level <= 10)) {
-                        ?>
-                            <div class="col-12 border">
-                                <h4 class="ml-2 mt-2">D. Academic Details</h4>
-                                <div class="row form-group p-2">
-                                    <div class="col-sm-12 col-md-6 p-2">
-                                        <label class=" form-control-label"><strong>Name of the SLC passed School:</strong></label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->SlcPassedSchool ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-1 p-2">
-                                        <label class=" form-control-label"><strong>Year:</strong></label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-2 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->PassedOutYear ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-3 p-2">
-                                        <label class=" form-control-label"><strong>Address:</strong></label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->SlcPassedSchoolAddress ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-5 p-2">
-                                        <label class=" form-control-label"><strong>Optional Subjects in SLC:</strong></label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-7 p-2">
-                                        <input type="text" value="<?php echo $admissionData[0]->OptionalSubjectsInSlc ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 p-2">
-                                        <strong>1st Optional</strong><input type="text" value="<?php echo $admissionData[0]->FirstOptional ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 p-2">
-                                        <strong>Mark in SLC</strong><input type="text" value="<?php echo $admissionData[0]->Mark1stOpionalInSlc ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 p-2">
-                                        <strong>Aggregate</strong><input type="text" value="<?php echo $admissionData[0]->AggregratePercent ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 p-2">
-                                        <strong>2nd Optional</strong><input type="text" value="<?php echo $admissionData[0]->SecondOptional ?>" disabled class="form-control">
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 p-2">
-                                        <strong>Mark in SLC</strong><input type="text" value="<?php echo $admissionData[0]->Mark2ndOpionalInSlc ?>" disabled class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2"><?php echo $admissionData[0]->AppliedFor != 'College' || ($admissionData[0]->Level >= 8 && $admissionData[0]->Level <= 10) ? 'D' : 'E' ?>. Extracurricular Activities</h4>
-                            <div class="row form-group p-2">
+                        <div class="col-sm-12 col-md-12 m-2">
+                            <div class="row form-group">
                                 <div class="col-sm-12 col-md-12 p-2">
-                                    <label class=" form-control-label"><strong>What activities were you involved in the schooling or leadership position did you hold?</strong></label>
+                                    <label class="form-control-label"><strong>1. पुरा नाम (देवनागरीमा) *</strong></label>
+                                    <input type="text" name="FullNameDevnagari" id="FullNameDevnagari" value="<?php echo @$admissionData[0]->FullNameDevnagari ?>" disabled class="form-control">
                                 </div>
-                                <div class="col-sm-12 col-md-12">
-                                    <textarea cols="10" rows="4" disabled class="form-control"><?php echo $admissionData[0]->ECA ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2"><?php echo $admissionData[0]->AppliedFor != 'College' || ($admissionData[0]->Level >= 8 && $admissionData[0]->Level <= 10) ? 'E' : 'F' ?>. Hobby</h4>
-                            <div class="row form-group p-2">
-                                <div class="col-sm-12 col-md-12">
-                                    <textarea cols="10" rows="4" disabled class="form-control"><?php echo $admissionData[0]->Hobby ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 border">
-                            <h4 class="ml-2 mt-2"><?php echo $admissionData[0]->AppliedFor != 'College' || ($admissionData[0]->Level >= 8 && $admissionData[0]->Level <= 10) ? 'F' : 'G' ?>. Awards and Recognition</h4>
-                            <div class="row form-group p-2">
                                 <div class="col-sm-12 col-md-12 p-2">
-                                    <label class=" form-control-label"><strong>Have you been awarded or recognized in any area at your school or any institution?</strong></label>
+                                    <label class="form-control-label"><strong>2. Full Name (IN BLOCK LETTERS) *</strong></label>
+                                    <input type="text" name="FullNameEnglish" id="FullNameEnglish" value="<?php echo @$admissionData[0]->FullNameEnglish ?>" disabled class="form-control">
                                 </div>
-                                <div class="col-sm-12 col-md-12">
-                                    <textarea cols="10" rows="4" disabled class="form-control"><?php echo $admissionData[0]->Awards ?></textarea>
+                                <div class="col-sm-12 col-md-12 p-2">
+                                    <label class="form-control-label"><strong>3. Date of Birth *</strong></label>
+                                    <input type="date" name="Dob" id="Dob" value="<?php echo @$admissionData[0]->Dob ?>" disabled class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-md-12 p-2">
+                                    <label class="form-control-label"><strong>4. Gender *</strong></label>
+                                    <input type="text" name="Gender" id="Gender" value="<?php echo @$admissionData[0]->Gender ?>" disabled class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border">
+                            <h4 class="ml-2 mt-2">5. Address</h4>
+                            <hr>
+                            <h5 class="ml-2 mt-1">Permanent Address</h5>
+                            <hr>
+                            <div class="row form-group ml-3">
+                                <div class="col-sm-12 col-md-12 p-2">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>1. Province </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="PermanentProvince" id="PermanentProvince" value="<?php echo @$admissionData[0]->PermanentProvince ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>2. District </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="PermanentDistrict" id="PermanentDistrict" value="<?php echo @$admissionData[0]->PermanentDistrict ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>3. Municipality </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="PermanentMunicipality" id="PermanentMunicipality" value="<?php echo @$admissionData[0]->PermanentMunicipality ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>4. Ward No. </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="PermanentWardNo" id="PermanentWardNo" value="<?php echo @$admissionData[0]->PermanentWardNo ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <hr>
+                            <h5 class="ml-2 mt-1">Temporary Address</h5>
+                            <hr>
+                            <div class="row form-group ml-3">
+                                <div class="col-sm-12 col-md-12 p-2">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>1. Province </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="TemporaryProvince" id="TemporaryProvince" value="<?php echo @$admissionData[0]->TemporaryProvince ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>2. District </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="TemporaryDistrict" id="TemporaryDistrict" value="<?php echo @$admissionData[0]->TemporaryDistrict ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>3. Municipality </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="TemporaryMunicipality" id="TemporaryMunicipality" value="<?php echo @$admissionData[0]->TemporaryMunicipality ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-3">
+                                            <label class=" form-control-label"><strong>4. Ward No. </strong></label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="TemporaryWardNo" id="TemporaryWardNo" value="<?php echo @$admissionData[0]->TemporaryWardNo ?>" disabled class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 border">
-                            <h4 class="ml-2 mt-2"><?php echo $admissionData[0]->AppliedFor != 'College' || ($admissionData[0]->Level >= 8 && $admissionData[0]->Level <= 10) ? 'G' : 'H' ?>. Others</h4>
-                            <div class="row form-group p-2">
-                                <div class="col-sm-12 col-md-10 p-2">
-                                    <label class=" form-control-label"><strong>1. Bus stop (if you wish to use school's transportation facility):</strong></label>
+                            <h4 class="ml-2 mt-2">6. Parents</h4>
+                            <hr>
+                            <div class="col-sm-12 col-md-12 p-2">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>1. Father's Name </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="FathersName" id="FathersName" value="<?php echo @$admissionData[0]->FathersName ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-2 p-2">
-                                    <?php
-                                    echo $admissionData[0]->Bus == 0 ? 'NO' : 'Yes';
-                                    ?>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>2. Occupation </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="FatherOccupation" id="FatherOccupation" value="<?php echo @$admissionData[0]->FatherOccupation ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-3">
-                                    <label class=" form-control-label"><strong>2. Blood Group:</strong></label>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>3. Phone Number </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="tel" name="FatherPhoneNumber" id="FatherPhoneNumber" value="<?php echo @$admissionData[0]->FatherPhoneNumber ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-9">
-                                    <input type="text" value="<?php echo $admissionData[0]->BloodGroup ?>" disabled class="form-control">
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>4. Mother's Name </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="MothersName" id="MothersName" value="<?php echo @$admissionData[0]->MothersName ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>3. Health Problem (If any):</strong></label>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>5. Occupation </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="MotherOccupation" id="MotherOccupation" value="<?php echo @$admissionData[0]->MotherOccupation ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->HealthProblem ?>" disabled class="form-control">
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>6. Phone Number </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="tel" name="MotherPhoneNumber" id="MotherPhoneNumber" value="<?php echo @$admissionData[0]->MotherPhoneNumber ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>4. Emergency Contact No:</strong></label>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>7. Guardian's Name </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="GuardianName" id="GuardianName" value="<?php echo @$admissionData[0]->GuardianName ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->EmergencyContact ?>" disabled class="form-control">
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>8. Occupation </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="GuardianOccupation" id="GuardianOccupation" value="<?php echo @$admissionData[0]->GuardianOccupation ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <label class=" form-control-label"><strong>5. Any unusual habit:</strong></label>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>9. Phone Number </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="tel" name="GuardianPhoneNumber" id="GuardianPhoneNumber" value="<?php echo @$admissionData[0]->GuardianPhoneNumber ?>" disabled class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <input type="text" value="<?php echo $admissionData[0]->UnSualHabit ?>" disabled class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 border">
+                            <h4 class="ml-2 mt-2">7. S.L.C./S.E.E.</h4>
+                            <hr>
+                            <div class="col-sm-12 col-md-12 p-2">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>1. School's Name * </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="SchoolsName" id="SchoolsName" value="<?php echo @$admissionData[0]->SchoolsName ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>2. Address *</strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="SchoolAddress" id="SchoolAddress" value="<?php echo @$admissionData[0]->SchoolAddress ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>3. Percentage/GPA *</strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="tel" name="PercentageGPA" id="PercentageGPA" value="<?php echo @$admissionData[0]->PercentageGPA ?>" disabled="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>4. Passed Year *</strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="date" name="PassedYear" id="PassedYear" value="<?php echo @$admissionData[0]->PassedYear ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>5. Symbol No. * </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="SymbolNo" id="SymbolNo" value="<?php echo @$admissionData[0]->SymbolNo ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 border">
+                            <h4 class="ml-2 mt-2">8. Optional Subjects Offered For Class 11/12 (ANY ONE)</h4>
+                            <div class="col-sm-12 col-md-12 p-2">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>1. Science </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="Science" id="Science" value="<?php echo @$admissionData[0]->Science ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>2. Management </strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="Management" id="Management" value="<?php echo @$admissionData[0]->Management ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>3. Humanities</strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="Humanities" id="Humanities" value="<?php echo @$admissionData[0]->Humanities ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-4">
+                                        <label class=" form-control-label"><strong>4. Education</strong></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="Education" id="Education" value="<?php echo @$admissionData[0]->Education ?>" disabled class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border">
+                            <h4 class="ml-2 mt-2">9. For disables only</h4>
+                            <div class="row ml-3 p-2">
+                                <div class="col-sm-12 col-md-12 p-2">
+                                    <label class="form-control-label"><strong>1. Kind of disability</strong></label>
+                                    <input type="text" name="disability" id="disability" value="<?php echo @$admissionData[0]->disability ?>" disabled class="form-control">
                                 </div>
                             </div>
                         </div>

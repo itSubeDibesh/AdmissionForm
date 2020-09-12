@@ -21,7 +21,7 @@ final class Admission extends Database
     {
         $args = array(
             'where' => array(
-                'AdmissionID' => $admission
+                'AdmissionId' => $admission
             )
         );
         return $this->select($args);

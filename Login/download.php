@@ -28,11 +28,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Configurations/Include/navbar.php';
                             <tr>
                                 <th>S.N</th>
                                 <th>Name</th>
-                                 <th>Applied For</th>
-                                <th>Stream</th>
-                                <th>Level</th>
-                                <th>Phone</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
                                 <th>Father's Name</th>
+                                <th>Mother's Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,12 +40,11 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Configurations/Include/navbar.php';
                             ?>
                                 <tr class="border">
                                     <td><?php echo $key + 1 ?></td>
-                                    <td><?php echo $value->FullName ?></td>
-                                     <td><?php echo $value->AppliedFor ?></td>
-                                    <td><?php echo $value->AppliedFor=="College"?$value->Stream:"" ?></td>
-                                    <td><?php echo $value->AppliedFor=="School"? $value->Level:"" ?></td>
-                                    <td><?php echo $value->MobileNo ?></td>
-                                    <td><?php echo $value->FatherName ?></td>
+                                    <td><?php echo $value->FullNameEnglish ?></td>
+                                    <td><?php echo $value->Dob ?></td>
+                                    <td><?php echo $value->Gender ?></td>
+                                    <td><?php echo $value->FathersName ?></td>
+                                    <td><?php echo $value->MothersName ?></td>
                                 </tr>
                             <?php
                             }
