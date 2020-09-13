@@ -5,7 +5,7 @@ session_start();
 
 /* Site Url*/
 define('SITE_URL', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']); /* http://localhost */
-define('SITE_TITLE', 'Balodhaya higher secondary school');
+define('SITE_TITLE', 'Kalika Multiple Campus');
 
 /* Backend directory*/
 define('CMS_URL', SITE_URL . '/Login');/* Root/cms */

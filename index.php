@@ -30,10 +30,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Configurations/Include/header.php';
                       <img src="<?php echo  UPLOAD_URL . '/logo.jpg' ?>" class="img img-thumbnail w-50" alt="">
                     </div>
                     <div class="col-12 col-md-8 p-2 text-center">
-                      <h3> BALODAYA</h3>
-                      <p> HIGHER SECONDARY SCHOOL</p>
-                      <div class="bg-dark text-light"> (COLLEGE OF MANAGEMENT AND SCIENCE)</div>
-                      <p> Balodaya Marga, Birauta, Pokhera-17</p>
+                      <h3> Kalika Multiple Campus</h3>
+                      <p> Kajipokhari, Pokhara-14, Nepal</p>
                     </div>
                   </div>
                 </div>

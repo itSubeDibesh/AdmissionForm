@@ -42,10 +42,8 @@ if (isset($_GET, $_GET['studentID']) && !empty($_GET['studentID'])) {
                                     <img src="<?php echo  UPLOAD_URL . '/logo.jpg' ?>" class="img img-thumbnail w-50" alt="">
                                 </div>
                                 <div class="col-12 col-md-8 p-2 text-center">
-                                    <h3> BALODAYA</h3>
-                                    <p> HIGHER SECONDARY SCHOOL</p>
-                                    <div class="bg-dark text-light"> (COLLEGE OF MANAGEMENT)</div>
-                                    <p> Balodaya Marga, Birauta, Pokhera-17</p>
+                                    <h3> Kalika Multiple Campus</h3>
+                                    <p> Kajipokhari, Pokhara-14, Nepal</p>
                                 </div>
                             </div>
                         </div>
