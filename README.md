@@ -27,7 +27,8 @@ Upload the file on your server.
 
 ## That's it, no more configuration.
 
-Deployed on [BALODAYA HIGHER SECONDARY SCHOOL](https://admission.bebs.edu.np/)
-Deployed on [Kalika Multiple Campus](https://www.admission.kmcpokhara.edu.np)
+# Deployed on:  
+- [BALODAYA HIGHER SECONDARY SCHOOL](https://admission.bebs.edu.np/) on [Commit](https://github.com/itSubeDibesh/AdmissionForm/commit/ec2c35f9df9470b02e156750b0029b91084d6a0a)
+- [Kalika Multiple Campus](https://www.admission.kmcpokhara.edu.np) on [Commit](https://github.com/itSubeDibesh/AdmissionForm/commit/c2c05d155a69ef8d6c268f3410dcbf2d8c2bb8e4)
 
 For Demo try it on : [CodeAppStore](https://admission.projects.codeappstore.com/)
